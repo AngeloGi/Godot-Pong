@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Godot Pong"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://GameScreen.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -20,6 +20,8 @@ window/size/width=960
 window/size/height=480
 window/size/resizable=false
 window/size/always_on_top=true
+window/handheld/emulate_touchscreen=true
+window/handheld/emulate_mouse_from_touch=false
 
 [rendering]
 
