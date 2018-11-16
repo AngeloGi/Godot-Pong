@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Paddle.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/PaddleLeft.png" type="Texture" id=2]
@@ -6,24 +6,77 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 11.0122 )
+extents = Vector2( 9.8967, 308.745 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" index="0"]
+[sub_resource type="RectangleShape2D" id=2]
 
+custom_solver_bias = 0.0
+extents = Vector2( 12.9051, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 95.8291, 10 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+position = Vector2( 0.115982, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0.892937, -0.694979 )
-scale = Vector2( 0.109766, 2.8684 )
+position = Vector2( 1.57615, -0.100887 )
+scale = Vector2( 0.0521581, 0.0989363 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="PaddleSprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
+
+[node name="BottomSpinnerArea" type="Area2D" parent="." index="2"]
+
+position = Vector2( 3.20778, 18.6718 )
+scale = Vector2( 0.0287763, 0.368077 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="BottomSpinnerCollision" type="CollisionShape2D" parent="BottomSpinnerArea" index="0"]
+
+position = Vector2( -3.15489, -4.06295 )
+scale = Vector2( -1.0891, 3.69378 )
+shape = SubResource( 2 )
+
+[node name="TopSpinner" type="Area2D" parent="." index="3"]
+
+position = Vector2( 4.44208, -18.4334 )
+scale = Vector2( 0.0324018, 0.358997 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="BottomSpinnerCollision" type="CollisionShape2D" parent="TopSpinner" index="0"]
+
+position = Vector2( -8.42513, 8.71215 )
+scale = Vector2( -0.166104, 3.80853 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="BottomSpinnerArea" to="." method="_on_BottomSpinnerArea_body_entered"]
+
+[connection signal="body_entered" from="TopSpinner" to="." method="_on_TopSpinner_body_entered"]
 
 

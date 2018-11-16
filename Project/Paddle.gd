@@ -23,13 +23,25 @@ func setIsLeftPaddle(isLeft):
 	else:
 		$PaddleSprite.set_texture(texture_RightPaddle)
 		bool_IsLeftPaddle = false
+		self.rotate(3.1415)
 		
 func _input(event):
 		if event is InputEventScreenDrag:
-			print(event.position.y)
 			if bool_IsLeftPaddle:
 				if event.position.x <= 480:
 					position.y = clamp(event.position.y,35,445)
 			else:
 				if event.position.x > 480:
 					position.y = clamp(event.position.y,35,445)
+
+func _on_BottomSpinnerArea_body_entered(body):
+	if bool_IsLeftPaddle:
+		body.vec2d_VelocityNormal.y = 130 + rand_range(-20,20)
+	else:
+		body.vec2d_VelocityNormal.y = -130 + rand_range(-20,20)
+
+func _on_TopSpinner_body_entered(body):
+	if bool_IsLeftPaddle:
+		body.vec2d_VelocityNormal.y = -130 + rand_range(-20,20)
+	else:
+		body.vec2d_VelocityNormal.y = 130 + rand_range(-20,20)
