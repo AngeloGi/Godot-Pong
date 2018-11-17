@@ -3,7 +3,7 @@
 [ext_resource path="res://MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/PlayButton.png" type="Texture" id=2]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -39,9 +39,9 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -80.0
+margin_left = -60.0
 margin_top = 4.0
-margin_right = 20.0
+margin_right = 40.0
 margin_bottom = 54.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -61,34 +61,20 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
 
-[node name="MenuButton" type="MenuButton" parent="." index="2"]
+[node name="MenuButton" type="TouchScreenButton" parent="." index="2"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 377.0
-margin_top = 260.0
-margin_right = 508.0
-margin_bottom = 330.0
-rect_scale = Vector2( 2, 2 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-action_mode = 0
-enabled_focus_mode = 0
-shortcut = null
-group = null
-text = "Play"
-icon = ExtResource( 2 )
-flat = true
-align = 1
-items = [  ]
-_sections_unfolded = [ "Rect", "custom_styles" ]
+position = Vector2( 480, 240 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 2 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Transform", "Visibility", "custom_styles" ]
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 
