@@ -34,14 +34,22 @@ func _input(event):
 				if event.position.x > 480:
 					position.y = clamp(event.position.y,35,445)
 
+		if event is InputEventScreenTouch:
+			if bool_IsLeftPaddle:
+				if event.position.x <= 480:
+					position.y = clamp(event.position.y,35,445)
+			else:
+				if event.position.x > 480:
+					position.y = clamp(event.position.y,35,445)
+
 func _on_BottomSpinnerArea_body_entered(body):
 	if bool_IsLeftPaddle:
-		body.vec2d_VelocityNormal.y = 130 + rand_range(-20,20)
+		body.vec2d_VelocityNormal.y += 130 + rand_range(-20,20)
 	else:
-		body.vec2d_VelocityNormal.y = -130 + rand_range(-20,20)
+		body.vec2d_VelocityNormal.y += -130 + rand_range(-20,20)
 
 func _on_TopSpinner_body_entered(body):
 	if bool_IsLeftPaddle:
-		body.vec2d_VelocityNormal.y = -130 + rand_range(-20,20)
+		body.vec2d_VelocityNormal.y += -130 + rand_range(-20,20)
 	else:
-		body.vec2d_VelocityNormal.y = 130 + rand_range(-20,20)
+		body.vec2d_VelocityNormal.y += 130 + rand_range(-20,20)
